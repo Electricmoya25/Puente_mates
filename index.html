@@ -6,15 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     :root {
-      --bg: #050816;
-      --bg-alt: #0f172a;
-      --accent: #38bdf8;
-      --accent-soft: rgba(56, 189, 248, 0.15);
-      --ok: #22c55e;
-      --ko: #ef4444;
-      --text: #e5e7eb;
-      --text-soft: #9ca3af;
-      --card: #111827;
+      --bg: #f5f5ff;
+      --bg-alt: #ffffff;
+      --accent: #ff9800;     /* naranja suave */
+      --accent-soft: #ffe0b2;
+      --accent-2: #42a5f5;   /* azul suave */
+      --ok: #43a047;         /* verde suave */
+      --ko: #e53935;         /* rojo suave */
+      --text: #263238;
+      --text-soft: #607d8b;
+      --card: #ffffff;
       --radius-lg: 18px;
     }
 
@@ -22,7 +23,7 @@
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #1e293b 0, #020617 55%);
+      background: var(--bg);
       color: var(--text);
       min-height: 100vh;
       display: flex;
@@ -35,9 +36,9 @@
       height: 100vh;
       max-width: 1200px;
       max-height: 800px;
-      background: linear-gradient(145deg, #020617, #020617 40%, #0b1220 100%);
+      background: var(--bg);
       border-radius: 0;
-      box-shadow: 0 20px 60px rgba(15, 23, 42, 0.9);
+      box-shadow: 0 8px 30px rgba(55, 71, 79, 0.15);
       overflow: hidden;
       display: flex;
       flex-direction: row;
@@ -60,8 +61,8 @@
 
     .right-panel {
       flex: 1;
-      background: radial-gradient(circle at top, #0b1120 0, #020617 55%);
-      border-left: 1px solid rgba(148, 163, 184, 0.2);
+      background: linear-gradient(180deg, #e3f2fd, #fffde7);
+      border-left: 1px solid rgba(176, 190, 197, 0.8);
       padding: 20px;
       display: flex;
       flex-direction: column;
@@ -71,7 +72,7 @@
     @media (max-width: 900px) {
       .right-panel {
         border-left: none;
-        border-top: 1px solid rgba(148, 163, 184, 0.2);
+        border-top: 1px solid rgba(176, 190, 197, 0.8);
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-between;
@@ -79,16 +80,17 @@
     }
 
     .title {
-      font-size: 28px;
+      font-size: 26px;
       font-weight: 800;
       letter-spacing: 0.03em;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
+      color: #37474f;
     }
 
     .title span.bridge {
-      font-size: 32px;
+      font-size: 30px;
     }
 
     .subtitle {
@@ -105,9 +107,9 @@
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      color: var(--text-soft);
+      background: #fffde7;
+      border: 1px solid #ffe082;
+      color: #f57c00;
       width: fit-content;
     }
 
@@ -115,15 +117,14 @@
       width: 8px;
       height: 8px;
       border-radius: 999px;
-      background: var(--accent);
-      box-shadow: 0 0 12px rgba(56, 189, 248, 0.9);
+      background: #f57c00;
     }
 
     .screen {
       flex: 1;
       border-radius: var(--radius-lg);
-      background: radial-gradient(circle at top, #020617 0, #020617 55%, #020617 100%);
-      border: 1px solid rgba(148, 163, 184, 0.25);
+      background: var(--bg-alt);
+      border: 2px solid #e0e0e0;
       padding: 16px;
       display: flex;
       flex-direction: column;
@@ -142,32 +143,34 @@
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
+      margin-bottom: 6px;
     }
 
     .badge {
       border-radius: 999px;
       padding: 4px 10px;
       font-size: 11px;
-      border: 1px solid rgba(148, 163, 184, 0.3);
-      color: var(--text-soft);
+      border: 1px solid #c5cae9;
+      color: #3949ab;
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: rgba(15, 23, 42, 0.8);
+      background: #e8eaf6;
+      font-weight: 500;
     }
 
     .bridge-progress {
       width: 100%;
-      height: 6px;
+      height: 8px;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.9);
+      background: #e0e0e0;
       overflow: hidden;
-      margin-top: 6px;
+      margin-top: 2px;
     }
 
     .bridge-bar {
       height: 100%;
-      background: linear-gradient(90deg, var(--accent), #22c55e);
+      background: linear-gradient(90deg, #ffb74d, #81c784);
       width: 0%;
       transition: width 0.4s ease-out;
     }
@@ -176,15 +179,15 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 12px;
-      margin-top: 8px;
+      margin-top: 10px;
       overflow-y: auto;
       padding-right: 4px;
     }
 
     .world-card {
-      background: radial-gradient(circle at top, #020617 0, #020617 50%, #020617 100%);
+      background: #ffffff;
       border-radius: 16px;
-      border: 1px solid rgba(148, 163, 184, 0.35);
+      border: 2px solid #e0e0e0;
       padding: 12px;
       cursor: pointer;
       display: flex;
@@ -195,29 +198,16 @@
       transition: transform 0.15s ease-out, box-shadow 0.15s ease-out, border-color 0.15s;
     }
 
-    .world-card::before {
-      content: "";
-      position: absolute;
-      inset: -40%;
-      background: radial-gradient(circle at top, rgba(56, 189, 248, 0.08), transparent 55%);
-      opacity: 0;
-      transition: opacity 0.2s ease-out;
-      pointer-events: none;
-    }
-
     .world-card:hover {
       transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.8);
-      border-color: rgba(56, 189, 248, 0.7);
-    }
-
-    .world-card:hover::before {
-      opacity: 1;
+      box-shadow: 0 4px 10px rgba(55, 71, 79, 0.2);
+      border-color: #ffcc80;
     }
 
     .world-title {
       font-size: 14px;
-      font-weight: 600;
+      font-weight: 700;
+      color: #37474f;
     }
 
     .world-desc {
@@ -243,18 +233,17 @@
     .star {
       font-size: 14px;
       opacity: 0.2;
+      color: #ffca28;
     }
 
     .star.filled {
       opacity: 1;
-      color: #fde047;
-      text-shadow: 0 0 8px rgba(250, 204, 21, 0.8);
     }
 
     .btn {
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid #cfd8dc;
+      background: #ffffff;
       color: var(--text);
       padding: 8px 14px;
       font-size: 13px;
@@ -262,20 +251,20 @@
       align-items: center;
       gap: 6px;
       cursor: pointer;
-      transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.1s ease;
+      transition: background 0.15s ease, transform 0.08s ease, box-shadow 0.08s ease;
     }
 
     .btn-primary {
-      background: linear-gradient(90deg, #38bdf8, #22c55e);
-      border-color: transparent;
-      color: #0f172a;
+      background: linear-gradient(90deg, #ffb74d, #ffcc80);
+      border-color: #ffa726;
+      color: #5d4037;
       font-weight: 600;
-      box-shadow: 0 8px 20px rgba(56, 189, 248, 0.6);
+      box-shadow: 0 3px 6px rgba(255, 167, 38, 0.5);
     }
 
     .btn-primary:hover {
       transform: translateY(-1px);
-      box-shadow: 0 12px 25px rgba(56, 189, 248, 0.7);
+      box-shadow: 0 4px 10px rgba(255, 167, 38, 0.6);
     }
 
     .btn-icon {
@@ -283,9 +272,14 @@
     }
 
     .btn-ghost {
-      border-color: rgba(148, 163, 184, 0.3);
-      background: transparent;
+      border-color: #cfd8dc;
+      background: #eceff1;
       color: var(--text-soft);
+    }
+
+    .btn:active {
+      transform: translateY(1px) scale(0.99);
+      box-shadow: none;
     }
 
     .game-area {
@@ -303,6 +297,9 @@
       align-items: center;
       font-size: 13px;
       color: var(--text-soft);
+      padding: 4px 8px;
+      border-radius: 12px;
+      background: #e3f2fd;
     }
 
     .game-main {
@@ -318,18 +315,19 @@
       font-size: 18px;
       text-align: center;
       max-width: 480px;
+      color: #37474f;
     }
 
     .angle-display {
       width: 200px;
       height: 200px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.3);
+      border-radius: 24px;
+      border: 2px solid #bbdefb;
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
-      background: radial-gradient(circle at top, #020617 0, #020617 60%, #020617 100%);
+      background: #e3f2fd;
       overflow: hidden;
     }
 
@@ -348,28 +346,29 @@
 
     .option-btn {
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      background: rgba(15, 23, 42, 0.9);
+      border: 2px solid #cfd8dc;
+      background: #ffffff;
       color: var(--text);
       padding: 10px 12px;
       font-size: 15px;
       cursor: pointer;
-      transition: background 0.1s ease, border-color 0.1s ease, transform 0.05s ease;
+      transition: background 0.1s ease, border-color 0.1s ease, transform 0.05s ease, box-shadow 0.05s ease;
       text-align: center;
     }
 
-    .option-btn:active {
-      transform: scale(0.98);
+    .option-btn:hover {
+      background: #fffde7;
+      box-shadow: 0 2px 4px rgba(189, 189, 189, 0.7);
     }
 
     .option-btn.correct {
-      border-color: rgba(34, 197, 94, 0.9);
-      background: rgba(22, 163, 74, 0.35);
+      border-color: #81c784;
+      background: #e8f5e9;
     }
 
     .option-btn.incorrect {
-      border-color: rgba(239, 68, 68, 0.9);
-      background: rgba(185, 28, 28, 0.35);
+      border-color: #ef9a9a;
+      background: #ffebee;
     }
 
     .feedback {
@@ -391,6 +390,7 @@
       justify-content: space-between;
       align-items: center;
       font-size: 13px;
+      margin-top: 4px;
     }
 
     .small-label {
@@ -401,15 +401,19 @@
     }
 
     .right-section {
-      background: rgba(15, 23, 42, 0.85);
-      border-radius: 14px;
-      border: 1px solid rgba(148, 163, 184, 0.3);
+      background: #ffffffcc;
+      border-radius: 16px;
+      border: 2px solid #ffe082;
       padding: 10px;
       flex: 1;
       display: flex;
       flex-direction: column;
       gap: 8px;
       min-width: 0;
+    }
+
+    .right-section:nth-child(2) {
+      border-color: #90caf9;
     }
 
     .stat-row {
@@ -423,9 +427,10 @@
       border-radius: 999px;
       padding: 4px 10px;
       font-size: 11px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      background: rgba(15, 23, 42, 0.9);
-      color: var(--text-soft);
+      border: 1px solid #cfd8dc;
+      background: #e3f2fd;
+      color: #1565c0;
+      font-weight: 500;
     }
   </style>
 </head>
@@ -538,8 +543,6 @@
   </div>
 
   <script>
-    // --- Mundos que cubren todo el Tema 9 (ángulos, pares, simetría, traslaciones, coordenadas y cálculo mental). [file:1] ---
-
     const WORLDS = [
       {
         id: 'angles-basic',
@@ -592,11 +595,8 @@
       }
     ];
 
-    // --- Niveles tipo test que cubren todos los apartados del tema. [file:1] ---
-
     const LEVELS = [
-      // --- MUNDO: ÁNGULOS BÁSICOS ---
-
+      // Ángulos básicos
       {
         id: 'angles-basic-partes',
         worldId: 'angles-basic',
@@ -701,8 +701,7 @@
         hint: 'Piensa en las esquinas de un folio o de una mesa.',
       },
 
-      // --- MUNDO: MEDIR Y DIBUJAR ÁNGULOS ---
-
+      // Medir y dibujar
       {
         id: 'angles-measure-recto',
         worldId: 'angles-measure',
@@ -764,8 +763,7 @@
         hint: 'El centro del transportador debe coincidir con el vértice del ángulo.',
       },
 
-      // --- MUNDO: PARES DE ÁNGULOS ---
-
+      // Pares de ángulos
       {
         id: 'angles-pairs-consecutivos-def',
         worldId: 'angles-pairs',
@@ -842,8 +840,7 @@
         hint: 'Piensa en el ángulo de una esquina de papel.',
       },
 
-      // --- MUNDO: SIMETRÍA ---
-
+      // Simetría
       {
         id: 'symmetry-def',
         worldId: 'symmetry',
@@ -905,8 +902,7 @@
         hint: 'Piensa en las dos diagonales y en las dos rectas que pasan por el centro y son paralelas a los lados.',
       },
 
-      // --- MUNDO: TRASLACIONES ---
-
+      // Traslaciones
       {
         id: 'translation-def',
         worldId: 'translation',
@@ -972,8 +968,7 @@
         hint: 'Compara solo la coordenada x: pasa de 2 a 5.',
       },
 
-      // --- MUNDO: COORDENADAS ---
-
+      // Coordenadas
       {
         id: 'coordinates-def',
         worldId: 'coordinates',
@@ -1045,8 +1040,7 @@
         hint: 'Tienen la misma x, así que están uno encima del otro.',
       },
 
-      // --- MUNDO: GIMNASIO MENTAL ---
-
+      // Gimnasio mental
       {
         id: 'mental-suma-35-15',
         worldId: 'mental-gym',
@@ -1103,8 +1097,6 @@
         hint: '300 menos 5.',
       }
     ];
-
-    // --- Estado sencillo ---
 
     const state = {
       currentWorldId: null,
@@ -1266,12 +1258,12 @@
       const cy = h / 2;
       const radius = 65;
 
-      ctx.fillStyle = 'rgba(15,23,42,1)';
+      ctx.fillStyle = '#e3f2fd';
       ctx.fillRect(0, 0, w, h);
 
       ctx.beginPath();
       ctx.arc(cx, cy, radius + 6, 0, 2 * Math.PI);
-      ctx.strokeStyle = 'rgba(148,163,184,0.5)';
+      ctx.strokeStyle = '#bbdefb';
       ctx.lineWidth = 1;
       ctx.setLineDash([4, 4]);
       ctx.stroke();
@@ -1285,15 +1277,15 @@
       ctx.arc(cx, cy, radius, baseAngle, baseAngle + rad, rad >= 0);
       ctx.closePath();
       const grad = ctx.createLinearGradient(cx, cy - radius, cx, cy + radius);
-      grad.addColorStop(0, 'rgba(56,189,248,0.25)');
-      grad.addColorStop(1, 'rgba(56,189,248,0.05)');
+      grad.addColorStop(0, 'rgba(66,165,245,0.4)');
+      grad.addColorStop(1, 'rgba(144,202,249,0.2)');
       ctx.fillStyle = grad;
       ctx.fill();
 
       ctx.beginPath();
       ctx.moveTo(cx, cy);
       ctx.lineTo(cx, cy - radius);
-      ctx.strokeStyle = '#e5e7eb';
+      ctx.strokeStyle = '#1e88e5';
       ctx.lineWidth = 2;
       ctx.stroke();
 
@@ -1304,10 +1296,10 @@
 
       ctx.beginPath();
       ctx.arc(cx, cy, 3, 0, 2 * Math.PI);
-      ctx.fillStyle = '#38bdf8';
+      ctx.fillStyle = '#fb8c00';
       ctx.fill();
 
-      ctx.fillStyle = '#e5e7eb';
+      ctx.fillStyle = '#37474f';
       ctx.font = 'bold 16px system-ui';
       ctx.textAlign = 'center';
       ctx.fillText(deg + '°', cx, cy + radius + 18);
@@ -1316,7 +1308,7 @@
     function handleOptionClick(level, index, btnEl) {
       const correct = index === level.correctIndex;
       feedbackEl.className = 'feedback ' + (correct ? 'ok' : 'ko');
-      feedbackEl.textContent = correct ? '¡Muy bien!' : 'Casi, prueba a fijarte en la abertura.';
+      feedbackEl.textContent = correct ? '¡Muy bien!' : 'Casi, fíjate bien y vuelve a intentarlo.';
 
       Array.from(optionsGridEl.children).forEach((child, i) => {
         child.classList.remove('correct', 'incorrect');
